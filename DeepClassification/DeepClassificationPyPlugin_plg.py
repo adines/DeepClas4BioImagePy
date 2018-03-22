@@ -5,6 +5,8 @@ import subprocess
 import json
 import wx
 from imagepy.ui.panelconfig import ParaDialog
+from imagepy.core.util import fileio
+import os
 
 class Plugin(Free):
     title = 'DeepClassificationPy'
@@ -13,7 +15,6 @@ class Plugin(Free):
     python=''
     pathAPI=''
     def load(self):
-        # self.pathAPI='C:\\Users\\adines\\Desktop\\DeepClassificationJ\\'
         Para = { 'p' : ''}
         View = [( 'lab' , 'Introduce the path to the API' ),
                 (str, 'path', 'p' ,'' )
@@ -41,8 +42,6 @@ class Plugin(Free):
                 (list, models, str , 'Model' , 'm' ,'' )
                 ]
         md=MyDialog(None,'DeepClassificationPy',self.pathAPI,self.python,View,Para)
-        md.setPathAPI(self.pathAPI)
-        md.setPython(self.python)
         md.initView()
 
         if md.ShowModal()==wx.ID_OK:
@@ -56,8 +55,17 @@ class Plugin(Free):
 
     def run(self,para=None):
         imp=IPy.get_ips()
+        if imp is None:
+            IPy.alert("Please open the image you want to classify",'Error')
+            return
+        name=imp.title
+        recent=fileio.recent
+        for i in recent:
+            pos1=i.rfind(os.sep)
+            pos2=i.rfind('.')
+            if name==i[pos1+1:pos2]:
+                image=i
 
-        image='C:\\Users\\adines\\Desktop\\ProyectoDePrueba\\1.jpg' #Cambiar esta variable para poner la ruta real de la imagen
         subprocess.check_output([self.python,self.pathAPI+'predict.py','-i',image,'-f',self.framework,'-m',self.model])
         data=json.load(open('data.json'))
         className=data['class']
