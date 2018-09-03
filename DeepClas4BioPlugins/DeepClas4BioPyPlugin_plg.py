@@ -7,7 +7,6 @@ import wx
 from imagepy.ui.panelconfig import ParaDialog
 from imagepy.core.util import fileio
 import os
-from wx import DirPickerCtrl
 
 
 class Plugin(Free):
@@ -114,7 +113,3 @@ class MyDialog(ParaDialog):
     def initView(self):
         ParaDialog.init_view(self, self.view, self.para)
 
-
-class OpenPathAPI(fileio.Reader):
-    title = "Select the path of the API"
-    filt = ["dir"]
