@@ -1,12 +1,23 @@
 ﻿# DeepClas4BioPy
+ 
+ **Path:** https://github.com/adines/DeepClas4BioImagePy
 
-DeepClas4BioPy is an ImagePy plugin that connects ImagePy with the [DeepClas4Bio API](https://github.com/adines/DeepClas4Bio).  This plugin allows ImagePy users to use deep learning techniques for object classification abstracting deep learning techniques details. 
+**Version:** 0.1
+
+**Author:** adines
+
+**Email:** adines@unirioja.es
+
+**Keyword:** deepclas4bio, classification
+
+**Description:** DeepClas4BioPy is an ImagePy plugin that connects ImagePy with the [DeepClas4Bio API](https://github.com/adines/DeepClas4Bio).  This plugin allows ImagePy users to use deep learning techniques for object classification abstracting deep learning techniques details.
+ 
 
 ## Requirements
 To use this plugin is necessary to have installed ImagePy with python 3.6 and the [DeepClas4Bio API](https://github.com/adines/DeepClas4Bio).
 
 ## Installation
-To install this plugin you have to download it and put it in the path imagepy --> menus --> Plugins --> DeepClas4Bio.
+To install this plugin you can use the Plugins Manager.
 
 ## Using the plugin
 In this section, we will see an example of how to use this plugin. For this example we will classify a lion image using the VGG16 model from the Keras framework. In addition, you can use the model and the framework that best suits to your problem. 
